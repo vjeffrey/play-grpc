@@ -4,20 +4,10 @@ option java_multiple_files = true;
 
 package unicorns;
 
-// The greeting service definition.
 service Friend {
-  // says hi to his friend
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
-  // Sends another greeting
-  rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+  rpc StartChatApp (StartRequest) returns (Response) {}
 }
 
-// The request message containing the user's name.
-message HelloRequest {
-  string name = 1;
-}
+message StartRequest {}
 
-// The response message containing the greetings
-message HelloReply {
-  string message = 1;
-}
+message Response {}

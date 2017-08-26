@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net"
 
@@ -16,12 +17,21 @@ const (
 
 type server struct{}
 
-func (s *server) SayHello(ctx context.Context, in *unicorns.HelloRequest) (*unicorns.HelloReply, error) {
-	return &unicorns.HelloReply{Message: "Hello " + in.Name}, nil
-}
+func (s *server) StartChatApp(ctx context.Context, in *unicorns.StartRequest) (*unicorns.Response, error) {
 
-func (s *server) SayHelloAgain(ctx context.Context, in *unicorns.HelloRequest) (*unicorns.HelloReply, error) {
-	return &unicorns.HelloReply{Message: "Hello again " + in.Name}, nil
+	var response int
+	fmt.Println("This program will start a chat app, are you sure about this?\n")
+
+	fmt.Scanf("%c", &response) //<--- here
+	switch response {
+	default:
+		fmt.Println("Chat launch aborted!")
+	case 'y':
+		fmt.Println("Chat launched")
+	case 'Y':
+		fmt.Println("Chat launched")
+	}
+	return &unicorns.Response{}, nil
 }
 
 func main() {
